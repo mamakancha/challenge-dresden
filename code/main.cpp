@@ -95,18 +95,18 @@ int32_t main()   /* main function starts here */
 		while(in >> input) {
 			parse.push_back(input);
 		}
-		bool type = parse[0] == "a";
-		if((int)parse.size() == 3) {
+		bool type = parse[0] == "a"; /* if type = true, we add edges, otherwise we delete. */
+		if((int)parse.size() == 3) { /* if we have the input type a u v or d u v */
 			int u, v;
-			u = stoi(parse[1]);
+			u = stoi(parse[1]); /* string to integer */
 			v = stoi(parse[2]);
 			add_edge(graph, u, v, type);
-		}else {
+		}else { /* when the edges are in hexadecimal form */
 			unsigned long long b = stoull(parse[1], nullptr, 16);
 			vector<int> bits;
-			for(int i = 0; i < 64; i ++)
+			for(int i = 0; i < 64; i ++) /* check for set bits */
 				if((b >> i) & 1)
-					bits.push_back(i);
+					bits.push_back(i); 
 			for(int i = 1; i < (int)bits.size(); i ++) 
 				for(int j = 0; j < i; j ++)
 					add_edge(graph, bits[i], bits[j], type);
