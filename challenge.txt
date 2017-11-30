@@ -1,0 +1,75 @@
+Programming challenge
+=====================
+
+Your task is to write a program that interactively re-computes a graph’s connected components, in response to user input.
+The user may modify the graph by adding and deleting edges.
+The graphs of interest are undirected, and we make the additional assumption that graphs may have at most 64 vertices.
+For a definition of ‘connected component’ in an undirected graph refer to, for example:
+https://en.wikipedia.org/wiki/Connected_component_(graph_theory)
+
+After your program has started, it should prompt the user to enter the number of vertices in the graph.
+(This number should be <= 64.)
+Then, the user may enter commands that adhere to the following format: “<action> <edge>”.
+Precisely one command may be entered per line of input.
+The action “<action>” may be either “a” for “add edge” or “d” for “delete edge”.
+The edge “<edge>” may be specified in one of two ways:
+
+  A) A pair of integers (in decimal base) that specify which vertices in the graph take part in the edge.
+     For example, the input line “a 19 42” says that an edge be added between vertices 19 and 42.
+     The command “d 19 42” would delete an edge between vertices 19 and 42 - if such an edge is present.
+     Nothing should happen if the user asks for the deletion of an edge that does not exist in the graph;
+     and the program should simply wait for the next line of user input.
+
+  B) A single integer (in hexadecimal base), whose bit pattern encodes a number of edges as follows.
+     Let c be the input integer.
+     If in the bit pattern of c the bits i and j are set, then c encodes an edge between vertices i and j.
+     Multiple edges may be encoded by the single integer c.
+     For example, if c = 0xB, then its bit pattern is 1011.
+     Since the bits 0, 1, and 3 are set, the number 0xB encodes three edges:
+       - one edge between vertices 0 and 1,
+       - another edge between vertices 0 and 3, and
+       - another edge between vertices 1 and 3.
+     Hence, the command “a 0xB” will cause these three edges to be added to the graph.
+     The command “d 0xB” will delete any of these three edges that are present in the graph.
+
+After every line of input, the program should check whether the number of connected components in the graph has changed.
+If so, the number of connected components should be reported to the console.
+If the number of connected components has not changed, there should be no output.
+
+Here is an example of how your program should interact with the user:
+(‘$>’ is the command-line symbol that prompts for user input.)
+
+
+  Enter the number of nodes (<=64):
+  $> 8
+  The graph has 8 connected components.
+  $> a 0xB
+  The graph has 6 connected components.
+  $> a 0xB0
+  The graph has 4 connected components.
+  $> a 2 6
+  The graph has 3 connected components.
+  $> a 0x1C
+  The graph has 1 connected component.
+  $> d 4 5
+  $> d 4 6
+  $> d 4 7
+  The graph has 2 connected components.
+
+
+Please implement your program in C/C++.
+Make sure that your source code is well organized.
+Think about what objects are required to represent input, graphs, edges etc. and how these objects should interact.
+Your solution will not be evaluated based on performance but on clarity and maintainability.
+Having said that, your code should obviously not spend time performing unnecessary or nonsensical computations.
+
+Since it may make sense to distribute your code across several source files, your solution should come with a build system.
+A single makefile, for example, should probably suffice.
+
+Please make sure you clearly document any design decisions you make.
+In particular, carefully document how you have resolved any potential ambiguities in the problem description.
+It may also make sense to use a version control system (preferably git).
+
+You should not spend more than one afternoon on this task.
+Your solution is due by 24 November 2017.
+Please email your solution to: norman.rink@tu-dresden.de
