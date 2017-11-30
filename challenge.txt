@@ -69,7 +69,3 @@ A single makefile, for example, should probably suffice.
 Please make sure you clearly document any design decisions you make.
 In particular, carefully document how you have resolved any potential ambiguities in the problem description.
 It may also make sense to use a version control system (preferably git).
-
-You should not spend more than one afternoon on this task.
-Your solution is due by 24 November 2017.
-Please email your solution to: norman.rink@tu-dresden.de
