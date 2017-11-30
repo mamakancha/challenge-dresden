@@ -1,6 +1,8 @@
 You can find the challenge description in challenge.txt and the files related to code are in the code folder.
 
-Once you have the code folder on your local PC,Open the terminal and change directory to where the files are
+Once you have the code folder on your local PC, open the terminal and change directory to where the files are.
+
+Although the code is in only one file, I have made a makefile for any changes in future.
 
 Instructions to be followed:
 
